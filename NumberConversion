@@ -1,0 +1,56 @@
+def convert_to_base(num, base):
+
+    dict = {10 : 'A', 11 : 'B', 12 : 'C',13 : 'D',
+            14 : 'E', 15 : 'F', 16 : 'G'}
+    
+    # Handle zero as a special case
+    if num == 0:
+        return "0"
+
+    digits = []
+    temp = num
+    while temp > 0:
+        remainder = temp % base
+
+        if remainder < 10:
+            digits.append(str(temp % base))
+            
+        if remainder in dict:
+            digits.append(dict[remainder])
+
+        temp //= base
+
+    # Since digits are collected in reverse, reverse them before joining
+    digits.reverse()
+    return ''.join(digits)
+
+
+# Main program
+num = int(input("Enter a number: "))
+base = int(input("Enter the base: "))
+
+converted = convert_to_base(num, base)
+print(f"The number {num} in base {base} is: {converted}")
+
+# Output
+"""
+Enter a number: 31
+Enter the base: 16
+The number 31 in base 16 is: 1F
+
+Enter a number: 3235
+Enter the base: 14
+The number 3235 in base 14 is: 1271
+3235%14
+1
+3235//14
+231
+231%14
+7
+231//14
+16
+16%14
+2
+16//14
+1
+"""
