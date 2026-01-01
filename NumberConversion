@@ -15,7 +15,7 @@ def convert_to_base(num, base):
         if remainder < 10:
             digits.append(str(temp % base))
             
-        if remainder in dict:
+        elif remainder in dict:
             digits.append(dict[remainder])
 
         temp //= base
